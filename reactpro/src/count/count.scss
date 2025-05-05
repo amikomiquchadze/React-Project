@@ -1,0 +1,33 @@
+.card{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+.Count{
+    padding: 20px;
+    font-family: sans-serif;
+}
+.increment {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 15px;
+
+}
+.decrement {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 15px;
+}

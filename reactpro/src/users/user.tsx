@@ -1,5 +1,6 @@
 import React from 'react';
-import { User } from './type';
+import { User } from '../type';
+import "./users.scss"
 
 const users: User[] = [
   { id: 1, name: "Alice Johnson", email: "alice@example.com", role: "Admin" },
@@ -9,7 +10,7 @@ const users: User[] = [
 
 const UserTable: React.FC = () => {
   return (
-    <div className="table-container">
+    <section className="table-container">
       <h2>User List</h2>
       <table className="user-table">
         <thead>
@@ -31,7 +32,7 @@ const UserTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
 
