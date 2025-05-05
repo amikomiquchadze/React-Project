@@ -7,6 +7,7 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/Count" element={<Count />} />
         <Route path="/users" element={<UserTable />} />
+        <Route path="/counter/:age" element={<Count/>}/>
       </Routes>
     );
   };
