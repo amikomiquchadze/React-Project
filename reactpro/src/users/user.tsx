@@ -1,9 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { User } from '../type';
-import "./users.scss"
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import modalStyles from "./EditModal.module.scss";
 
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import styles from './users.module.scss'
 const initialUsers: User[] = [
   { id: 1, name: "Alice Johnson", email: "alice@example.com", role: "Admin", age:"22"},
   { id: 2, name: "Bob Smith", email: "bob@example.com", role: "Editor", age:"29" },
@@ -71,7 +70,7 @@ const UserTable: React.FC = () => {
   return (
     
     
-    <section className="table-container">
+    <section className={styles["table-container"]}>
        <h2>Add New User</h2>
       <form onSubmit={handleAddUser} style={{ marginBottom: "1rem" }}>
         <input
@@ -138,7 +137,7 @@ const UserTable: React.FC = () => {
                   <td><input name="role" value={formData.role} onChange={handleChange} /></td>
                   <td><input name="age" type="number" value={formData.age} onChange={handleChange} /></td> */}
                   <td>
-                  <button className="edit" onClick={() => openEditModal(user)}>Edit</button>
+                  <button className={styles.edit} onClick={() => openEditModal(user)}>Edit</button>
                   </td>
               
               
@@ -146,7 +145,7 @@ const UserTable: React.FC = () => {
               {/* <button onClick={() => openEditModal(user)}>Edit</button> */}
               <button
                 onClick={() => handleDelete(user.id)}
-               className="delete"
+                className={styles.delete}
               >
                 Delete
               </button>

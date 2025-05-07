@@ -1,0 +1,203 @@
+// Variables
+$table-bg: #ffffff;
+$table-header-bg: #3f51b5;
+$table-header-color: #ffffff;
+$table-border: #e0e0e0;
+$row-hover-bg: #f5f7fa;
+$link-color: #1976d2;
+$Add-color:#4caf50;
+$edit-color: #1976d2;
+$delete-color: #f44336;
+$modal-bg: rgba(0, 0, 0, 0.6);
+
+// Container
+.table-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: $table-bg;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  // Form Styling
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+
+    input {
+      padding: 0.6rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    button {
+      background-color:$Add-color;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #43a047;
+      }
+    }
+  }
+
+  // Table Styling
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+
+    thead {
+      background-color: $table-header-bg;
+      color: $table-header-color;
+
+      th {
+        padding: 1rem;
+        text-align: left;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $table-border;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: $row-hover-bg;
+        }
+
+        td {
+          padding: 0.9rem 1rem;
+
+          a {
+            color: $link-color;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          button {
+            padding: 0.45rem 0.9rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &.edit {
+              background-color: $edit-color;
+              color: #fff;
+
+              &:hover {
+                background-color: #054f9a;
+              }
+            }
+
+            &.delete {
+              background-color: $delete-color;
+              color: #fff;
+              margin-left: 0.5rem;
+
+              &:hover {
+                background-color: #d32f2f;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Modal Styling
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modal-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  button {
+    padding: 0.45rem 0.9rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  
+    .edit {
+      background-color: #0b6fd3; // Blue
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    
+      &:hover {
+        background-color: #1565c0;
+      }
+    }
+    
+    .delete {
+      background-color: #f44336; // Red
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    
+      &:hover {
+        background-color: #d32f2f;
+      }
+    }
+    
+  }
+}    
