@@ -19,7 +19,7 @@ const NewUserForm: React.FC = () => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
+    alert(data);
     reset(); // Clear form after submit
   };
 
