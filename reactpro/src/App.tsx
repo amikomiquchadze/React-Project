@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider, useAuth } from "./auth/authContext";
 import PrivateRoute from "../src/privateRoute";
 import Login from "./loginPage/login";
@@ -7,14 +7,13 @@ import Count from "./count/count";
 import NewUserForm from "./inputForm/inputForms";
 import NotFound from "./routeError/notFound";
 import Logout from "./loginPage/logout";
+import FirstApi from "./firstApi/firstApi";
 
 const Navigation = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth(); // Assuming useAuth is correctly implemented
 
   return (
     <>
-      
-
       {/* Show auth state visibly */}
       <div style={{ color: "gray", marginBottom: "1rem" }}>
         Authenticated: {isAuthenticated ? "Yes ✅" : "No ❌"}
@@ -23,12 +22,7 @@ const Navigation = () => {
   );
 };
 
-
 const App = () => {
-  
-  // const { isAuthenticated } = useAuth();
-  // console.log("Is logged in:", isAuthenticated);
-  
   return (
     <Router>
       <AuthProvider>
@@ -38,14 +32,15 @@ const App = () => {
             <Link to="/users">Users</Link> |{" "}
             <Link to="/count">Counter</Link> |{" "}
             <Link to="/inputForm">Form</Link> |{" "}
+            <Link to="/firstApi">First API</Link> |{" "}
             <Link to="/logout">Logout</Link>
-            
           </nav>
-          
-          {/* Define routes here */}
-          <Navigation />
-          <Routes>
 
+          {/* Show navigation and authentication state */}
+          <Navigation />
+
+          {/* Define routes here */}
+          <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route
@@ -72,13 +67,20 @@ const App = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/firstApi"
+              element={
+                <PrivateRoute>
+                  <FirstApi />
+                </PrivateRoute>
+              }
+            />
             {/* Fallback for undefined paths */}
-            <Route path="/logout" element={<Logout />} /> {/* ✅ This is now fixed */}
+            <Route path="/logout" element={<Logout />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </AuthProvider>
-      
     </Router>
   );
 };

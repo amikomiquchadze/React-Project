@@ -33,7 +33,7 @@ const UserTable: React.FC = () => {
     name: "",
     email: "",
     role: "",
-    age: "0",
+    age: "",
   });
   const [editingUserId, setEditingUserId] = useState<number | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
