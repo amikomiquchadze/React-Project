@@ -13,7 +13,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = (username: string, password: string) => {
     // Replace with your actual logic
-    if (username === "admin" && password === "1234") {
+    if (username === "admin" && password === "123123123") {
       setIsAuthenticated(true);
       return true;
     }
