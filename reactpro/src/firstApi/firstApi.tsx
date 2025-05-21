@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchUsers, deleteUser, updateUser } from "../redux/userSlice";
 import "./firstApi.scss";
+import { Link } from "react-router-dom";
 
 const FirstApi: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,7 +14,7 @@ const FirstApi: React.FC = () => {
   const [editedName, setEditedName] = useState("");
 
   useEffect(() => {
-    dispatch(fetchUsers()); // fetch page 1
+    dispatch(fetchUsers()); // ✅ this triggers the fetch
   }, [dispatch]);
 
   const handleDelete = (id: number) => {
@@ -64,7 +65,9 @@ const FirstApi: React.FC = () => {
               </>
             ) : (
               <>
-                <span className="user-name">{user.name}</span>
+               <Link to={`/user/${user.id}`} className="user-name">
+  {user.name}
+</Link>
                 <div className="button-container">
                   <button
                     onClick={() => handleEdit(user.id, user.name)}

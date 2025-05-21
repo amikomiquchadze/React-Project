@@ -1,11 +1,12 @@
-// src/redux/store.ts
+// store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './userSlice';
+import userReducer from './userSlice'; // ✅ Correct path
 
 export const store = configureStore({
   reducer: {
-    users: userReducer,
+    users: userReducer, // ✅ 'users' is the key for useSelector
   },
+  devTools: true, // Optional: enables Redux DevTools explicitly
 });
 
 export type RootState = ReturnType<typeof store.getState>;
