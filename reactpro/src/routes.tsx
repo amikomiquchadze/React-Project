@@ -3,6 +3,8 @@ import Count from "./count/count";
 import UserTable from "./users/user";
 import NewUserForm from "./inputForm/inputForms";
 import Login from "./loginPage/login";
+import Logout from "./loginPage/logout";
+import FirstApi from "./firstApi/firstApi";
 
 const AppRoutes: React.FC = () => {
     return (
@@ -11,7 +13,10 @@ const AppRoutes: React.FC = () => {
         <Route path="/users" element={<UserTable />} />
         <Route path="/counter/:age" element={<Count/>}/>
         <Route path="/inputForm" element={<NewUserForm/>}/>
+        <Route path="/firstApi" element={<FirstApi/>}/>
         <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Logout />} />
+        <Route path="/logout" element={<Logout />} />
 
       </Routes>
     );
