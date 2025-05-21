@@ -1,8 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { User } from "../type";
-
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./users.module.scss";
+
 const initialUsers: User[] = [
   {
     id: 1,
@@ -37,13 +37,14 @@ const UserTable: React.FC = () => {
   });
   const [editingUserId, setEditingUserId] = useState<number | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "age" ? Number(value) : value,
+      [name]: value,
     }));
   };
 
@@ -54,7 +55,7 @@ const UserTable: React.FC = () => {
       ...formData,
     };
     setUsers((prev) => [...prev, newUser]);
-    setFormData({ name: "", email: "", role: "", age: "0" });
+    setFormData({ name: "", email: "", role: "", age: "" });
   };
 
   const handleDelete = (id: number) => {
@@ -93,6 +94,7 @@ const UserTable: React.FC = () => {
     }
     closeModal();
   };
+
   return (
     <section className={styles["table-container"]}>
       <h2>Add New User</h2>
@@ -135,6 +137,7 @@ const UserTable: React.FC = () => {
         />
         <button type="submit">Add User</button>
       </form>
+
       <h2>User List</h2>
       <table className="user-table">
         <thead>
@@ -144,11 +147,10 @@ const UserTable: React.FC = () => {
             <th>Email</th>
             <th>Role</th>
             <th>Age</th>
-            <th>Actions</th>
-            <th>Actions</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
-
         <tbody>
           {users.map((user: User) => (
             <tr key={user.id}>
@@ -157,13 +159,8 @@ const UserTable: React.FC = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                {" "}
-                <Link to={`/counter/${user.age}`}>{user.age} </Link>
+                <Link to={`/count/${user.age}`}>{user.age}</Link>
               </td>
-              {/* <td><input name="name" value={formData.name} onChange={handleChange} /></td>
-                  <td><input name="email" value={formData.email} onChange={handleChange} /></td>
-                  <td><input name="role" value={formData.role} onChange={handleChange} /></td>
-                  <td><input name="age" type="number" value={formData.age} onChange={handleChange} /></td> */}
               <td>
                 <button
                   className={styles.edit}
@@ -172,9 +169,7 @@ const UserTable: React.FC = () => {
                   Edit
                 </button>
               </td>
-
               <td>
-                {/* <button onClick={() => openEditModal(user)}>Edit</button> */}
                 <button
                   onClick={() => handleDelete(user.id)}
                   className={styles.delete}
@@ -186,6 +181,7 @@ const UserTable: React.FC = () => {
           ))}
         </tbody>
       </table>
+
       {showModal && (
         <div
           style={{
